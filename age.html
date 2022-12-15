@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #757677;
+            margin: 140px auto;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            background: rgb(95, 94, 94);
+            min-height: 100px;
+            width: 520px;
+            height: 360px;
+            margin: 100px auto;
+            border-radius: 6px;
+        }
+        
+        .head {
+            width: 100%;
+            margin: 0;
+            overflow: hidden;
+            display: block;
+            float: none;
+        }
+        
+        .head h1 {
+            font-size: 26px;
+            text-align: center;
+            margin-top: 0px;
+            color: white;
+            background: rgb(0, 0, 0);
+            padding: 4px;
+            box-shadow: 0px 2px white;
+        }
+        
+        .text1 {
+            color: whitesmoke;
+            text-align: left;
+            font-size: 20px;
+            word-spacing: 2.5px;
+            letter-spacing: 0.4px;
+        }
+        
+        input[type=text] {
+            width: 140px;
+            margin: auto;
+            outline: none;
+            min-height: 50px;
+            border: 2px solid rgb(15, 231, 213);
+            border-radius: 10px;
+            color: rgb(255, 255, 255);
+            font-size: 20px;
+            padding: 6px;
+            background-color: black;
+        }
+        
+        .ab {
+            width: 135px;
+            padding: 5px 20px;
+            margin-left: 20px;
+            display: inline-block;
+            float: left;
+        }
+        
+        #submit {
+            width: 150px;
+            margin-left: 37%;
+            margin-top: 30px;
+            outline: none;
+            border-radius: 10px;
+            background-color: rgb(86, 101, 133);
+            padding: 10px 16px;
+            color: black;
+            font-size: 16px;
+        }
+        
+        #submit:hover {
+            background: linear-gradient(rgb(117, 137, 226), rgb(8, 138, 88));
+            ;
+        }
+        
+        .an {
+            color: aliceblue;
+            display: block;
+            margin: 10px;
+            margin-top: 8px;
+            padding-bottom: 13px;
+            overflow: hidden;
+            font-size: 18px;
+            word-spacing: 2.5px;
+            line-height: 1.4;
+            padding: 10px;
+        }
+        
+        .am {
+            font-size: 20px;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form>
+            <div class="head">
+                <h1>Age Calculator</h1>
+            </div>
+
+
+
+
+
+            <div class="ab">
+                <p class="text1">Date</p>
+                <input id="day" type="text" placeholder="day" maxlength="2" minlength="1" required />
+            </div>
+
+
+            <div class="ab">
+                <p class="text1">Month</p>
+                <input id="month" type="text" placeholder="month" maxlength="2" minlength="1" required/>
+            </div>
+
+
+
+            <div class="ab">
+                <p class="text1">Year</p>
+                <input id="year" type="text" placeholder="year" maxlength="4" minlength="4" required/>
+            </div>
+            <div>
+                <button id="submit">Calculator</button>
+            </div>
+            <div class="an">
+                <h2><span class="am">Your age is :</span></span><span id="result"></span>
+                </h2>
+            </div>
+
+    </div>
+
+
+    </form>
+    </div>
+
+    <script>
+        let age = "";
+
+        function render() {
+            const resultNode = document.getElementById("result");
+            resultNode.innerText = age;
+
+        }
+
+        function onSubmit() {
+
+            const dayInput = document.getElementById("day");
+            const monthInput = document.getElementById("month");
+            const yearInput = document.getElementById("year");
+
+            const today = new Date();
+
+
+
+            const yearDifference = today.getFullYear() - Number(yearInput.value);
+            const monthDifference = (today.getMonth() + 1) - Number(monthInput.value);
+            const daysDifference = today.getDate() - Number(dayInput.value);
+
+            age =
+                yearDifference + "years" +
+                monthDifference + "months" +
+                daysDifference + "days";
+
+            dayInput.value = "";
+            monthInput.value = "";
+            yearInput.value = "";
+
+            render();
+
+        }
+
+
+        const submitButton = document.getElementById("submit");
+        submitButton.addEventListener("click", onSubmit);
+        render();
+    </script>
+</body>
+
+</html>
